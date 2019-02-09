@@ -1,0 +1,21 @@
+.TodoForm {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    border-bottom: 1px solid #111111;
+}
+.TodoForm__Input {
+    outline: none;
+    background-color: transparent;
+    border: none;
+
+    font-size: 24px;
+}
+.TodoForm__Button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;    
+    font-size: 24px;
+}

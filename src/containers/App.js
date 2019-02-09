@@ -3,26 +3,28 @@ import uuid from 'uuid';
 import style from './App.css';
 import Title from '../components/Title.js';
 import TodoList from '../components/TodoList';
+import TodoForm from '../components/TodoForm';
+
+import { hot } from 'react-hot-loader';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [
-                {
-                    id: 1,
-                    text: 'clean room'
-                }, 
-                {
-                    id: 2,
-                    text: 'wash the dishes'
-                }, 
-                {
-                    id: 3,
-                    text: 'feed my cat'
-                }
-            ]
+            data: [],
+            formText: '',
         }
+    }
+
+    handleChange(event) {
+        this.setState({formText: event.target.value});
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        if (!this.state.formText.length) return;
+        this.addTodo(this.state.formText);
+        this.setState({formText: ''});
     }
 
     addTodo(val) {
@@ -42,16 +44,23 @@ class App extends React.Component {
     render() {
         return (
             <div className={style.TodoApp}>
-                <Title 
-                    value={this.state.data.length} 
-                />
-                <TodoList 
-                    data={this.state.data}
-                    dataRemove={this.removeTodo.bind(this)} 
-                />
+                <div className={style.TodoApp__Card}>
+                    <Title 
+                        value={this.state.data.length} 
+                    />
+                    <TodoList 
+                        data={this.state.data}
+                        dataRemove={this.removeTodo.bind(this)} 
+                    />
+                    <TodoForm 
+                        onSubmit={this.handleSubmit.bind(this)}
+                        onChange={this.handleChange.bind(this)}
+                        value={this.state.formText}
+                    />
+                </div>
             </div>
         );
     }
 }
 
-export default App;
+export default hot(module) (App);

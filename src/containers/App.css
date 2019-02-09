@@ -1,5 +1,6 @@
 .TodoApp {
-    background-color: #f5f5f5;
+    background-color: #eee;
+    font-family: 'Dekko', cursive;
     color: #222;
     display: flex;
     flex-direction: column;
@@ -9,4 +10,11 @@
     align-content: center;
     width: 100vw;
     height: 100vh;
+}
+
+.TodoApp__Card {
+    background-color: lightyellow;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14);
 }
